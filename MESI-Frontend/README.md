@@ -11,10 +11,18 @@ ng serve
 
 # generate new composent
 
-ng generate component nom-du-composant
+ng g component nom-du-composant
 
 # install dependencies
 
 ng add @ng-bootstrap/ng-bootstrap
 
 ng add @angular/material
+
+# create service
+
+ng generate service
+
+# model
+
+ng generate class name --type=model
