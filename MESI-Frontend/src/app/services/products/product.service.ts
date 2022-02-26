@@ -23,4 +23,3 @@ export class ProductService {
   getProduct(id: number): Observable<Product> {
     return this.http.get(`${this.apiProducts}${id}`);
   }
-}
