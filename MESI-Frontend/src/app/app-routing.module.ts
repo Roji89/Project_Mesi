@@ -4,6 +4,8 @@ import { BoardUserComponent } from './profiles/board-user/board-user.component';
 
 const routes: Routes = [
   { path: 'user-board', component: BoardUserComponent},
+
+
 ];
 
 @NgModule({

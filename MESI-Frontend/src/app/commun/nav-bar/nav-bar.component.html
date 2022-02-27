@@ -1,10 +1,12 @@
-<header>
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <h5 class="my-0 mr-md-auto font-weight-normal">Coffee Shop</h5>
-    <nav class="my-2 my-md-0 mr-md-3">
+<header class="background-color">
+  <nav class="navbar navbar-expand navbar-dark header-content">
+    <h5 class="my-0 mr-md-auto font-weight-normal logo-img">
+      <img src="assets/coffee-beans.png" alt="coffe-logo" width="50" height="60">
+    </h5>
+    <nav class="my-2 my-md-0 mr-md-3 topbar">
       <a
 
-        class="p-2 normal-style"
+        class="p-2 normal-style topbar-left"
         routerLink="/user-board"
         routerLinkActive="active"
         >Profil</a
@@ -19,7 +21,7 @@
     </nav>
     <a
 
-      class="signup-b btn normal-style"
+      class="signup-b btn normal-style topbar-right"
       routerLinkActive="active"
       routerLinkActive="active"
       routerLink="/register"
@@ -34,12 +36,12 @@
       routerLink="/login"
       >Login</a
     >
-    <button
+    <a
       type="button"
       class="btn normal-style"
       routerLinkActive="active"
     >
       Logout
-    </button>
+  </a>
   </nav>
 </header>
