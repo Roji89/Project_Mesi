@@ -1,0 +1,26 @@
+/* *{
+  margin: 0 auto;
+} */
+
+.color-edition{
+  color: #98BEC8;
+  margin: 0 auto;
+
+}
+.style-text{
+  color: white;
+  font-family: Source Sans Pro, sans-serif;
+}
+.text-left{
+  text-align: left;
+}
+.card-profile{
+  background-color: #4f7b86;
+  margin: 0 auto;
+}
+.align-edition{
+  width: 40px;
+  height: 37px;
+  color: black;
+  margin: 0 auto;
+}
