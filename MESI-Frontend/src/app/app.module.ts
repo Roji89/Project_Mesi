@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './views/home/home.component';
 import { HeaderComponent } from './commun/header/header.component';
 import { FooterComponent } from './commun/footer/footer.component';
 import { BoardAdminComponent } from './profiles/board-admin/board-admin.component';
@@ -18,7 +19,9 @@ import { NavBarComponent } from './commun/nav-bar/nav-bar.component';
     FooterComponent,
     BoardAdminComponent,
     BoardUserComponent,
-    NavBarComponent
+    NavBarComponent,
+    AppComponent, 
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,6 @@ import { NavBarComponent } from './commun/nav-bar/nav-bar.component';
     MatIconModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
