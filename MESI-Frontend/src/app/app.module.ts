@@ -7,7 +7,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-// Imports of App components
+import { HomeComponent } from './views/home/home.component';
+import { HeaderComponent } from './commun/header/header.component';
 import { FooterComponent } from './commun/footer/footer.component';
 import { BoardAdminComponent } from './profiles/board-admin/board-admin.component';
 import { BoardUserComponent } from './profiles/board-user/board-user.component';
@@ -23,7 +24,9 @@ import { RegisterComponent } from './Auth/register/register.component';
     BoardUserComponent,
     NavBarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AppComponent, 
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,6 @@ import { RegisterComponent } from './Auth/register/register.component';
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
