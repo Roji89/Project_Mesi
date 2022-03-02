@@ -23,3 +23,15 @@
 # for the moment we can use the fake server to do CRUD
 
 https://github.com/Roji89/demo-server-MESI
+
+# Angular structure:
+
+## Components -> all the components which we can use in the other components!
+
+## Views -> the main pages!
+
+## Services
+
+## models
+
+## assets
