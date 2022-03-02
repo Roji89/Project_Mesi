@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -9,9 +11,13 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
-
+  onClickSignOut(){
+    this.authService.logout();
+    this.router.navigate(['login'])
+    }
 }

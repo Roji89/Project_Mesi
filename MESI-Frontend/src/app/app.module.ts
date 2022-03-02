@@ -5,20 +5,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './commun/header/header.component';
+import {MatCardModule} from '@angular/material/card';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+// Imports of App components
 import { FooterComponent } from './commun/footer/footer.component';
 import { BoardAdminComponent } from './profiles/board-admin/board-admin.component';
 import { BoardUserComponent } from './profiles/board-user/board-user.component';
 import { NavBarComponent } from './commun/nav-bar/nav-bar.component';
+import { LoginComponent } from './Auth/login/login.component';
+import { RegisterComponent } from './Auth/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     FooterComponent,
     BoardAdminComponent,
     BoardUserComponent,
-    NavBarComponent
+    NavBarComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +31,10 @@ import { NavBarComponent } from './commun/nav-bar/nav-bar.component';
     NgbModule,
     BrowserAnimationsModule,
     MatIconModule,
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

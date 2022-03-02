@@ -1,24 +1,23 @@
-a { text-decoration: none;
+a {
+  text-decoration: none;
   font-family: Source Sans Pro, sans-serif;
 }
-.space-button{
-padding-left: 15px;
+.space-button {
+  padding-left: 15px;
 }
 
-.normal-style{
-  color: #FFFFFF;
+.normal-style {
+  color: #ffffff;
 }
-.active{
-  background-color: #E1EEEF;
-  color: #2B3839;
+.active {
+  background-color: #e1eeef;
+  color: #2b3839;
 }
-.background-color{
-background-color: #165055;
+.background-color {
+  background-color: #165055;
 }
-.logo-img{
+.logo-img {
   padding-left: 5px;
   padding-right: 15px;
-
 }
 /* #4f7b86 */
-
