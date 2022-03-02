@@ -17,6 +17,7 @@ import { BoardUserComponent } from './profiles/board-user/board-user.component';
 import { NavBarComponent } from './commun/nav-bar/nav-bar.component';
 import { LoginComponent } from './Auth/login/login.component';
 import { RegisterComponent } from './Auth/register/register.component';
+import { CartComponent } from './views/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { RegisterComponent } from './Auth/register/register.component';
     HomeComponent,
     ProductsComponent,
     ProductComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
