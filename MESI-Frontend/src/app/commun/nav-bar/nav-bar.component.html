@@ -8,20 +8,17 @@
         height="60"
       />
     </h5>
-    <nav class="my-2 my-md-0 mr-md-3 topbar">
-      <a
-        class="p-2 normal-style topbar-left"
-        routerLink="/user-board"
-        routerLinkActive="active"
-        >Profil</a
-      >
-      <a class="p-2 normal-style" routerLinkActive="active" [routerLink]="['/']"
-        >Accueil</a
-      >
-    </nav>
+    <a class="p-2 normal-style" routerLinkActive="active" [routerLink]="['/']"
+      >Home</a
+    >
+    <a
+      class="p-2 normal-style topbar-left"
+      routerLink="/user-board"
+      routerLinkActive="active"
+      >Profil</a
+    >
     <a
       class="signup-b btn normal-style topbar-right"
-      routerLinkActive="active"
       routerLinkActive="active"
       routerLink="/register"
       >Sign up</a
@@ -29,7 +26,6 @@
     <span class="space-button"></span>
     <a
       class="login-b btn normal-style"
-      routerLinkActive="active"
       routerLinkActive="active"
       routerLink="/login"
       >Login</a
