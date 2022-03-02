@@ -11,7 +11,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HomeComponent } from './views/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductComponent } from './components/product/product.component';
-<<<<<<< HEAD
 import { FooterComponent } from './commun/footer/footer.component';
 import { BoardAdminComponent } from './profiles/board-admin/board-admin.component';
 import { BoardUserComponent } from './profiles/board-user/board-user.component';
