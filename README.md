@@ -4,6 +4,11 @@
 
 # git
 
+## git structue
+
+- main
+- develop
+
 ## create branch:
 
 ### git checkout develop
