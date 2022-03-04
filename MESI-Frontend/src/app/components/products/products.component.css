@@ -1,0 +1,14 @@
+.card-group > .card {
+  flex: 1 0 26%;
+}
+
+.card {
+  border: none !important;
+}
+button {
+  background-color: #204d48;
+  border-color: #204d48;
+}
+.btn-primary:hover {
+  background-color: #3b555d;
+}

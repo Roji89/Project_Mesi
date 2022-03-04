@@ -1,42 +1,41 @@
-<header class="background-color">
-  <nav class="navbar navbar-expand navbar-dark header-content">
-    <h5 class="my-0 mr-md-auto font-weight-normal logo-img">
-      <img
-        src="assets/coffee-beans.png"
-        alt="coffe-logo"
-        width="50"
-        height="60"
-      />
-    </h5>
-    <a class="p-2 normal-style" routerLinkActive="active" [routerLink]="['/']"
-      >Home</a
-    >
-    <a
-      class="p-2 normal-style topbar-left"
-      routerLink="/user-board"
-      routerLinkActive="active"
-      >Profil</a
-    >
-    <a
-      class="signup-b btn normal-style topbar-right"
-      routerLinkActive="active"
-      routerLink="/register"
-      >Sign up</a
-    >
-    <span class="space-button"></span>
-    <a
-      class="login-b btn normal-style"
-      routerLinkActive="active"
-      routerLink="/login"
-      >Login</a
-    >
-    <a
-      type="button"
-      class="btn normal-style"
-      routerLinkActive="active"
-      (click)="onClickSignOut()"
-    >
-      Logout
-    </a>
-  </nav>
-</header>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <h5 class="my-0 mr-md-auto font-weight-normal logo-img">
+    <img src="assets/coffee-beans.png" alt="coffe-logo" width="50" height="60" />
+  </h5>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLinkActive="active" routerLink='/'>Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/register" topbar-left>Sign-Up</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/login" topbar-left>Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/user-board" routerLinkActive="active" topbar-left>Profile</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Store
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Home Coffee</a>
+          <a class="dropdown-item" href="#">Merchandise</a>
+          <a class="dropdown-item" href="#">Food</a>
+          <a class="dropdown-item" href="#">Gift Cards</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
