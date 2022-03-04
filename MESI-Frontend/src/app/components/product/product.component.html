@@ -1,3 +1,15 @@
-<div *ngIf="product">
-    <h2>{{product.name | uppercase}}</h2>
+<!-- <div *ngIf="product">
+    
+</div> -->
+<div class="content">
+    <div class="product" *ngIf="product">
+        <div class="proimage">
+            <img class="card-img-top" [src]="product.image" alt="coffee" />
+        </div>
+        <div class="protext">
+            <h2>{{product.name | uppercase}}</h2>
+            <span style="flex: 1;">{{product.description}}</span>
+            <h2 class="text">Price :{{product.price}} $</h2>
+        </div>
+    </div>
 </div>

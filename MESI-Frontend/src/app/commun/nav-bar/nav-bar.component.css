@@ -1,23 +1,14 @@
-a {
-  text-decoration: none;
-  font-family: Source Sans Pro, sans-serif;
-}
-.space-button {
-  padding-left: 15px;
-}
-
-.normal-style {
+.navbar-nav .nav-link {
   color: #ffffff;
 }
-.active {
-  background-color: #e1eeef;
-  color: #2b3839;
+.nav-item:hover {
+  color: #84c7abb0 !important;
+  font-size: large;
 }
-.background-color {
-  background-color: #165055;
+.navbar {
+  background-color: #1e3932;
 }
 .logo-img {
   padding-left: 5px;
   padding-right: 15px;
 }
-/* #4f7b86 */

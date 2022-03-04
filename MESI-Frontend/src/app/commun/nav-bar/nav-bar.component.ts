@@ -3,21 +3,17 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
-
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
+  constructor(private authService: AuthService, private router: Router) {}
 
-  constructor(private authService: AuthService,
-    private router: Router) { }
-
-  ngOnInit(): void {
-  }
-  onClickSignOut(){
+  ngOnInit(): void {}
+  onClickSignOut() {
     this.authService.logout();
-    this.router.navigate(['login'])
-    }
+    this.router.navigate(['login']);
+  }
 }

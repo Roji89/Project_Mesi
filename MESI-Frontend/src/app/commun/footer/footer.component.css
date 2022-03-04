@@ -1,6 +1,13 @@
-*{
-  background-color: #165055;
+.background-color {
+  background-color: #1e3932;
 }
-.background-color{
-  background-color: #165055;
+.footer {
+  display: flex;
+  height: 100px;
+  bottom: 0;
+  width: 100%;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  color: aliceblue;
 }
