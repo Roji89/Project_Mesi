@@ -1,6 +1,7 @@
 a {
   text-decoration: none;
   font-family: Source Sans Pro, sans-serif;
+  fill: #e1eeef;
 }
 .space-button {
   padding-left: 15px;
@@ -12,6 +13,7 @@ a {
 .active {
   background-color: #e1eeef;
   color: #2b3839;
+  fill: #2b3839;
 }
 .background-color {
   background-color: #165055;
