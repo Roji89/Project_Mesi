@@ -8,6 +8,7 @@ const user = require("../model/user");
 /*
  *******Register********
  */
+
 const register =
   ("/register",
   async (req, res) => {
@@ -16,15 +17,16 @@ const register =
       if (!(email && password)) {
         res.status(400).send("All input is required");
       }
+
       const oldUser = await User.findOne({ email });
       if (oldUser) {
         return res.status(409).send("User Already Exist. Please Login");
       }
-
       encryptedPassword = await bcrypt.hash(password, 10);
 
       const user = await User.create({
         email: email.toLowerCase(),
+
         password: encryptedPassword,
         role: role || "user",
       });

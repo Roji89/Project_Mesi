@@ -1,7 +1,11 @@
 require("dotenv").config();
 require("./config/database").connect();
 const express = require("express");
+<<<<<<< HEAD
 const verifyToken = require("./middleware/auth");
+=======
+
+>>>>>>> add backend
 const cors = require("cors");
 const userRouter = require("./routes/userRouter");
 const app = express();
