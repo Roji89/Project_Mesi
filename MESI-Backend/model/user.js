@@ -15,7 +15,6 @@ const userSchema = new mongoose.Schema(
     },
     password: { type: String, required: true, minlength: 5 },
     token: { type: String },
-    // avatar:{ type: Buffer, required: false },
     avatar: { type: String, default: "" },
     role: {
       type: String,

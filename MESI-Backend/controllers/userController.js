@@ -3,66 +3,56 @@ const auth = require("../middleware/auth");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const path = require("path");
+const user = require("../model/user");
 
+/*
+ *******Register********
+ */
 const register =
   ("/register",
   async (req, res) => {
     try {
-      // Get user input
       const { email, password, role } = req.body;
-
-      // Validate user input
       if (!(email && password)) {
         res.status(400).send("All input is required");
       }
-      // Validate if user exist in our database
       const oldUser = await User.findOne({ email });
       if (oldUser) {
         return res.status(409).send("User Already Exist. Please Login");
       }
 
-      //Encrypt user password
       encryptedPassword = await bcrypt.hash(password, 10);
 
-      // Create user in our database
       const user = await User.create({
-        email: email.toLowerCase(), // sanitize: convert email to lowercase
+        email: email.toLowerCase(),
         password: encryptedPassword,
         role: role || "user",
       });
 
-      const token = jwt.sign(
-        { user_id: user._id, email },
-        process.env.TOKEN_KEY,
-        {
-          expiresIn: "7d",
-        }
-      );
+      const token = jwt.sign({ user_id: user._id }, process.env.TOKEN_KEY, {
+        expiresIn: "7d",
+      });
 
-      // save user token
       user.token = token;
       await user.save();
 
-      // return new user
       res.status(201).json(user);
     } catch (err) {
       console.log(err);
     }
   });
 
-/////////////////// Login user
+/*
+ *******Login********
+ */
 const login =
   ("/login",
-  async (req, res) => {
+  async (req, res, next) => {
     try {
       const { email, password } = req.body;
       const user = await User.findOne({ email });
-      if (!email) {
-        res.status(400).send("Email does not exist");
-      }
-      if (!password) {
-        res.status(400).send("Password is not correct");
-      }
+
+      if (!user) return next(res.status(400).send("Email does not exist"));
 
       if (user && (await bcrypt.compare(password, user.password))) {
         const token = jwt.sign({ user_id: user._id }, process.env.TOKEN_KEY, {
@@ -78,54 +68,61 @@ const login =
     }
   });
 
-//////////////////get Profile
+/*
+ *******get Users********
+ */
+const getUsers = async (req, res) => {
+  const users = await User.find({});
+  res.status(200).json({ data: users });
+};
+/*
+ *******get User********
+ */
+const getUser = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const user = await User.findById(userId);
+    if (!user) return res.status(400).json({ error: "user doesnt exist" });
 
-const profile =
-  ("/profile",
-  auth,
-  async (req, res) => {
-    const token =
-      req.body.token || req.query.token || req.headers["x-access-token"];
+    res.status(200).json(user);
+  } catch (error) {
+    console.log(err);
+  }
+};
+/*
+ *******update User********
+ */
+const updateUser = async (req, res) => {
+  try {
+    const update = req.body;
+    const userId = req.params.userId;
+    await User.findByIdAndUpdate(userId, update);
+    res.status(200).json({ data: user, message: "user has been updated" });
+  } catch (error) {
+    res.status(400).json({ message: "couldnt update user" });
+  }
+};
 
-    const user = await User.findOne({ token });
-    if (token) {
-      const get_info = [
-        req.user.email,
-        req.user.first_name,
-        req.user.last_name,
-        req.user.avatar,
-      ];
-
-      return res.status(200).json(get_info);
-    }
-  });
-///////////Edit User
-
-const editProfile =
-  ("/profile/edit",
-  auth,
-  async (req, res) => {
-    const token =
-      req.body.token || req.query.token || req.headers["x-access-token"];
-
-    if (token)
-      try {
-        const updateUser = await User.findOneAndUpdate(
-          req.params._id,
-          {
-            password: req.body.password,
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-          },
-          { new: true }
-        );
-
-        res.status(200).json(updateUser);
-      } catch (err) {
-        res.status(500).json(err);
-      }
-  });
+/*
+ *******delete User********
+ */
+const deleteUser = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    await User.findByIdAndDelete(userId);
+    res.status(200).json({
+      data: null,
+      message: "user has been deleted!",
+    });
+  } catch (error) {
+    res.status(400).json({ message: "couldnt delete user" });
+  }
+};
 module.exports = {
   register,
   login,
+  getUser,
+  getUsers,
+  updateUser,
+  deleteUser,
 };

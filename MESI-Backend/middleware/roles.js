@@ -10,15 +10,15 @@ exports.roles = () => {
 
   access
     .grant("admin")
-    .grant("user")
     .readOwn("profile")
     .updateOwn("profile")
-    .deleteOwn("user");
+    .deleteOwn("profile");
 
   access
     .grant("superadmin")
     .extend("user")
-    .extend("superadmin")
+    .extend("admin")
+    .readAny("profile")
     .updateAny("profile")
     .deleteAny("profile");
 
