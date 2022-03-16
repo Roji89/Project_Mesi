@@ -1,14 +1,13 @@
-.card-group > .card {
-  flex: 1 0 26%;
+.card-text {
+  min-height: 6rem;
 }
 
-.card {
-  border: none !important;
-}
 button {
   background-color: #204d48;
   border-color: #204d48;
+  color: #fff
 }
-.btn-primary:hover {
+button:hover {
+  color: #fff;
   background-color: #3b555d;
 }
