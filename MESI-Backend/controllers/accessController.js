@@ -1,10 +1,13 @@
-const { roles } = require("../middleware/roles");
+const auth = require("../middleware/auth");
+const User = require("../model/user");
 
-exports.grantsAcess = (action, resource) => {
+exports.adminAccess = () => {
   return async (req, res, next) => {
     try {
-      const permission = roles.can(req.user.role)[action](resource);
-      if (!permission.granted) {
+      const token =
+        req.body.token || req.query.token || req.headers["x-access-token"];
+      const user = await User.findOne({ token });
+      if (user.role !== "superadmin") {
         return res.status(401).json({ error: "you don't have permission!" });
       }
       next();
@@ -14,13 +17,17 @@ exports.grantsAcess = (action, resource) => {
   };
 };
 
-exports.allowIfLogged = async (req, res, next) => {
-  try {
-    const user = res.locals.loggedInUser;
-    if (!user) return res.status(401).json({ error: "you need to logged in!" });
-    req.user = user;
-    next();
-  } catch (error) {
-    next(error);
-  }
-};
+exports.allowIfLogged =
+  (auth,
+  async (req, res, next) => {
+    try {
+      const token =
+        req.body.token || req.query.token || req.headers["x-access-token"];
+      const user = await User.findOne({ token });
+      if (!user)
+        return res.status(401).json({ error: "you need to logged in!" });
+      next();
+    } catch (error) {
+      next(error);
+    }
+  });

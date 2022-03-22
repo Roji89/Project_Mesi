@@ -56,7 +56,7 @@ const login =
 
       if (user && (await bcrypt.compare(password, user.password))) {
         const token = jwt.sign({ user_id: user._id }, process.env.TOKEN_KEY, {
-          expiresIn: "48h",
+          expiresIn: "7d",
         });
         await User.findByIdAndUpdate(user._id, { token });
         res.status(200).send(user);
@@ -71,10 +71,12 @@ const login =
 /*
  *******get Users********
  */
-const getUsers = async (req, res) => {
-  const users = await User.find({});
-  res.status(200).json({ data: users });
-};
+const getUsers =
+  ("/users",
+  async (req, res) => {
+    const users = await User.find({});
+    res.status(200).json({ data: users });
+  });
 /*
  *******get User********
  */
@@ -86,7 +88,7 @@ const getUser = async (req, res) => {
 
     res.status(200).json(user);
   } catch (error) {
-    console.log(err);
+    console.log("wrong request");
   }
 };
 /*
