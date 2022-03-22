@@ -45,6 +45,6 @@ export class ProductComponent implements OnInit {
     this.addedToCart = true;
     setTimeout(() => {
       this.addedToCart = false
-    }, 1500);
+    }, 2000);
   }
 }

@@ -36,4 +36,8 @@ export class CartService {
     
     this.cart.totalPrice += productTotalPrice
   }
+
+  updateCart(newCart: Cart) {
+    this.cart = newCart;
+  }
 }

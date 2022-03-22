@@ -17,7 +17,7 @@
                                     Quantity:
                                 </span>
                             </div>
-                            <input type="number" name="quantity" min="1" max="10" class="form-control" [value]="item.quantity">
+                            <input type="number" name="quantity" min="1" max="10" class="form-control" [value]="item.quantity" (change)="onChangeQuantity(item, $event)">
                         </div>
                     </div>
                 </div>
