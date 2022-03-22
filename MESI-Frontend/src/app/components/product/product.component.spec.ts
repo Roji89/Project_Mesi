@@ -3,6 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { ProductComponent } from './product.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormBuilder } from '@angular/forms';
 
 describe('ProductComponent', () => {
   let component: ProductComponent;
@@ -11,6 +12,7 @@ describe('ProductComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ RouterTestingModule, HttpClientModule ],
+      providers: [ FormBuilder ],
       declarations: [ ProductComponent ]
     })
     .compileComponents();
