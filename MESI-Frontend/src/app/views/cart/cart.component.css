@@ -7,8 +7,14 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
-button{
-  margin-top: 5px;
-  background-color: #98BEC8;
-  color: white;
+
+button {
+  background-color: #204d48;
+    border-color: #204d48;
+    color: #fff
+}
+
+button:hover {
+  color: #fff;
+  background-color: #3b555d;
 }

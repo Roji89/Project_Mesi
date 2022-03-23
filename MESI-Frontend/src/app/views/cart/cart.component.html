@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row" *ngIf="cart else emptyCart">
+    <div class="row" *ngIf="cart && cart.totalPrice != 0 else emptyCart">
         <div class="col-8">
             <div class="text-center mx-auto">
                 <div class="card-body h-50 w-50">
@@ -13,11 +13,11 @@
                         </div>
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon3">
+                                <span class="input-group-text" >
                                     Quantity:
                                 </span>
                             </div>
-                            <input type="number" name="quantity" min="1" max="10" class="form-control" [value]="item.quantity">
+                            <input type="number" name="quantity" min="1" max="10" class="form-control" [value]="item.quantity" (change)="onChangeQuantity(item, $event)">
                         </div>
                     </div>
                 </div>

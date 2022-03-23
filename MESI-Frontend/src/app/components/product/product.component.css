@@ -1,24 +1,18 @@
-.content {
-  height: 80%;
-}
-.product {
-  margin-top: 20px;
-  display: flex;
-  height: 40%;
-  justify-content: space-around;
-}
-.proimage {
-  display: flex;
-}
-.protext {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 30%;
+.price {
+  color: rgb(146, 0, 0);
 }
 
-.text {
-  justify-content: flex-end;
-  color: rgb(146, 0, 0);
-  bottom: 0;
+.product-image {
+  max-height: 30rem;
+}
+
+.btn {
+  background-color: #204d48;
+  border-color: #204d48;
+  color: #fff
+}
+
+.btn:hover {
+  color: #fff;
+  background-color: #3b555d;
 }
