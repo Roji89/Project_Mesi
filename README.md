@@ -29,6 +29,8 @@
 
 https://github.com/Roji89/demo-server-MESI
 
+json-server db.json
+
 # Angular structure:
 
 ## Components -> all the components which we can use in the other components!
