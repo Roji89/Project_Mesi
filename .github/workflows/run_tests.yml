@@ -1,4 +1,4 @@
-name: Run tests
+name: CI - Unit Tests
 
 on: 
   push:
@@ -7,7 +7,7 @@ on:
       - develop
 
 jobs:
-  build:
+  run tets:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
