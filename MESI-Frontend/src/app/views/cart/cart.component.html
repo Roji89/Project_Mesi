@@ -13,11 +13,12 @@
                         </div>
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" >
+                                <span class="input-group-text">
                                     Quantity:
                                 </span>
                             </div>
-                            <input type="number" name="quantity" min="1" max="10" class="form-control" [value]="item.quantity" (change)="onChangeQuantity(item, $event)">
+                            <input type="number" name="quantity" min="1" max="10" class="form-control"
+                                [value]="item.quantity" (change)="onChangeQuantity(item, $event)">
                         </div>
                     </div>
                 </div>
@@ -30,8 +31,14 @@
             </div>
         </div>
     </div>
-    <ng-template #emptyCart >
-        <div class="mx-auto text-center">Your cart is empty! Pick something in our store 😇</div>
+    <ng-template #emptyCart>
+        <div class="d-flex flex-column justify-content-center">
+            <p class="text-center mt-5">Your cart is empty! Pick something in our store 😇</p>
+            <a routerLink='/'>
+                <button class="btn my-5">
+                    Home
+                </button>
+            </a>
+        </div>
     </ng-template>
 </div>
-
