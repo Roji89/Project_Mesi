@@ -1,7 +1,6 @@
-*{
-    margin: 0 auto;
-    font-family: Source Sans Pro, sans-serif;
-  
+* {
+  margin: 0 auto;
+  font-family: Source Sans Pro, sans-serif;
 }
 .card-profile{
   margin-top: 20px;
@@ -10,8 +9,8 @@
 
 button {
   background-color: #204d48;
-    border-color: #204d48;
-    color: #fff
+  border-color: #204d48;
+  color: #fff
 }
 
 button:hover {
