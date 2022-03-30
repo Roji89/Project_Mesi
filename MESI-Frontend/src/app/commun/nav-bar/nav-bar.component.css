@@ -6,6 +6,7 @@
   font-size: large;
 }
 .navbar {
+  min-height: 10%;
   background-color: #1e3932;
 }
 .logo-img {
