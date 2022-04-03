@@ -9,9 +9,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
+  
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
+
   onClickSignOut() {
     this.authService.logout();
     this.router.navigate(['login']);
