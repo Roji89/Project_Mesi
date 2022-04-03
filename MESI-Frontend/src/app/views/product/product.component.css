@@ -5,14 +5,3 @@
 .product-image {
   max-height: 30rem;
 }
-
-.btn {
-  background-color: #204d48;
-  border-color: #204d48;
-  color: #fff
-}
-
-.btn:hover {
-  color: #fff;
-  background-color: #3b555d;
-}
