@@ -1,30 +1,3 @@
-<!-- This is the HTML file for the login, i'm using de function loginUser for validate the infos -->
-<!-- <div class="card auth-wrapper">
-  <div class="form-signin" (ngSubmit)="loginUser()">
-    <h3 class="h3 mb-3 font-weight-normal text-center">Please sign in</h3>
-    <div class="form-group">
-      <label>Email</label>
-      <input
-        type="email"
-        class="form-control"
-        formControlName="email"
-        placeholder="Enter email"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input
-        type="password"
-        class="form-control"
-        formControlName="password"
-        placeholder="Password"
-      />
-    </div>
-    <button type="submit" class="btn btn-block btn-primary">Sign in</button>
-  </div>
-</div> -->
-
 <div class="card text-center col-md-6 card-profile">
   <div >
     <h1>Login</h1>
@@ -46,8 +19,7 @@
         formControlName="password"
         placeholder="Password"
       />
-
-    <button type="submit" class="btn" (click)="onSubmitLoginForm()">Sign in</button>
+      <app-button type="submit" (click)="onSubmitLoginForm()">Login</app-button>
   </form>
   </div>
 </div>

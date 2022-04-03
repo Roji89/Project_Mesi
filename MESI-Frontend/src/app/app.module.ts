@@ -19,6 +19,7 @@ import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { CartComponent } from './views/cart/cart.component';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
+import { ButtonComponent } from './components/commons/button/button.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CarouselComponent } from './components/home/carousel/carousel.component
     ProductComponent,
     CartComponent,
     CarouselComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,
