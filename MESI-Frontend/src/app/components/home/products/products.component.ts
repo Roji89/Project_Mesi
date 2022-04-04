@@ -17,11 +17,9 @@ export class ProductsComponent implements OnInit {
   }
 
   getProducts() {
-    this.productSetvice.productList().subscribe(
-      (response: any) => {
-        this.products = response;
-      },
-      (error) => console.log(error)
-    );
-  }
+    this.productSetvice.productList()
+    .subscribe({
+      next: (response: any) => this.products = response,
+      error: (e) => console.log(e)})
+    }
 }
