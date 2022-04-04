@@ -1,36 +1,23 @@
-<div class="card text-center col-md-6 card-profile">
-  <form class="form-signin">
-    <h1 class="h3 mb-3 font-weight-normal text-center">Please sign up</h1>
+<app-form title="Register">
+  <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label> Username</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="username"
-        placeholder="Enter username"
-        required
-      />
+      <label>First Name</label>
+      <input type="text" class="form-control" formControlName="firstName" placeholder="Enter your first name"
+        required />
     </div>
     <div class="form-group">
-      <label>Email address</label>
-      <input
-        type="email"
-        class="form-control"
-        formControlName="email"
-        placeholder="Enter email"
-        required
-      />
+      <label>Last Name</label>
+      <input type="text" class="form-control" formControlName="lastName" placeholder="Enter your last name"
+        required />
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" class="form-control" formControlName="email" placeholder="Enter email" required />
     </div>
     <div class="form-group">
       <label>Password</label>
-      <input
-        type="password"
-        class="form-control"
-        formControlName="password"
-        placeholder="Password"
-        required
-      />
+      <input type="password" class="form-control" formControlName="password" placeholder="Password" required />
     </div>
     <app-button type="submit">Register</app-button>
   </form>
-</div>
+</app-form>
