@@ -20,6 +20,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { CartComponent } from './views/cart/cart.component';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
 import { ButtonComponent } from './components/commons/button/button.component';
+import { FormComponent } from './components/commons/form/form.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ButtonComponent } from './components/commons/button/button.component';
     CartComponent,
     CarouselComponent,
     ButtonComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,

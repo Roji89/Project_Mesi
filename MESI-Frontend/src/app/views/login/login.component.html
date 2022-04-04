@@ -1,25 +1,26 @@
-<div class="card text-center col-md-6 card-profile">
-  <div >
-    <h1>Login</h1>
+<app-form title="Login">
+  <div class=" alert alert-danger" *ngIf="error">
+    {{ error }}
   </div>
-  <div class="card-body">
-    <form>
-    <label>Email</label>
-      <input
-        type="email"
-        class="form-control"
-        formControlName="email"
-        placeholder="Enter email"
-        required
-      />
-      <label>Password</label>
-      <input
-        type="password"
-        class="form-control"
-        formControlName="password"
-        placeholder="Password"
-      />
-      <app-button type="submit" (click)="onSubmitLoginForm()">Login</app-button>
-  </form>
-  </div>
-</div>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <label>Email</label>
+    <input
+      type="email"
+      class="form-control"
+      formControlName="email"
+      placeholder="Enter email"
+      (focus)="hideAlert()"
+      required
+    />
+    <label>Password</label>
+    <input
+      type="password"
+      class="form-control"
+      formControlName="password"
+      placeholder="Password"
+      (focus)="hideAlert()"
+      required
+    />
+    <app-button type="submit" class="mt-3">Login</app-button>
+</form>
+</app-form>
