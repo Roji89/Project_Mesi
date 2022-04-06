@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   showAlert(message: string): void {
-    console.log(message)
     this.error = message
   }
 
