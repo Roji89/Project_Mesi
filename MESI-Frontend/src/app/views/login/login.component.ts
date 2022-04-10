@@ -33,7 +33,9 @@ export class LoginComponent implements OnInit {
     this.error = '';
   }
 
-  /** method called when user try to login */
+  /**
+   * Submit login form
+   */
   onSubmit() {
     this.authService
       .login(this.loginForm.value["email"], this.loginForm.value["password"]).subscribe({
@@ -45,6 +47,10 @@ export class LoginComponent implements OnInit {
         }})
   }
 
+  /**
+   * Set user token then redirect to home page
+   * @param token User token
+   */
   navigateAfterLogin(token: string): void {
     this.authService.token = token;
     this.router.navigate([''])
