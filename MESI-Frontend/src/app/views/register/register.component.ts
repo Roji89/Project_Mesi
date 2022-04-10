@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { User } from '../../models/user.model';
 
@@ -19,7 +20,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -32,6 +34,9 @@ export class RegisterComponent implements OnInit {
     this.error = '';
   }
 
+  /**
+   * Submit register form
+   */
   onSubmit(): void {
     let user: User = new User(
       this.registerForm.value['firstName'],
@@ -41,8 +46,17 @@ export class RegisterComponent implements OnInit {
     );
 
     this.authService.register(user).subscribe({
-      next: (v) => console.log(v),
+      next: (v) => this.navigateAfterRegister(v.token),
       error: (e) => this.showAlert(e.error),
     });
+  }
+
+  /**
+   * Set user token then redirect to home page
+   * @param token User token
+   */
+  navigateAfterRegister(token: string): void {
+    this.authService.token = token;
+    this.router.navigate(['']);
   }
 }
