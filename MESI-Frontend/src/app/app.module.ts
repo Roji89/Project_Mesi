@@ -21,6 +21,7 @@ import { CartComponent } from './views/cart/cart.component';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
 import { ButtonComponent } from './components/commons/button/button.component';
 import { FormComponent } from './components/commons/form/form.component';
+import { ProfileComponent } from './views/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { FormComponent } from './components/commons/form/form.component';
     CarouselComponent,
     ButtonComponent,
     FormComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
