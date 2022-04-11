@@ -11,8 +11,6 @@ import { User } from '../../models/user.model';
 })
 export class RegisterComponent implements OnInit {
   registerForm = this.formBuilder.group({
-    firstName: '',
-    lastName: '',
     email: '',
     password: '',
   });
@@ -39,8 +37,8 @@ export class RegisterComponent implements OnInit {
    */
   onSubmit(): void {
     let user: User = new User(
-      this.registerForm.value['firstName'],
-      this.registerForm.value['lastName'],
+      '',
+      '',
       this.registerForm.value['email'],
       this.registerForm.value['password']
     );
