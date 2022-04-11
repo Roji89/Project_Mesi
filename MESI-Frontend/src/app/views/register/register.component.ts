@@ -36,12 +36,10 @@ export class RegisterComponent implements OnInit {
    * Submit register form
    */
   onSubmit(): void {
-    let user: User = new User(
-      '',
-      '',
-      this.registerForm.value['email'],
-      this.registerForm.value['password']
-    );
+    let user: User = {
+      email: this.registerForm.value['email'],
+      password: this.registerForm.value['password']
+    };
 
     this.authService.register(user).subscribe({
       next: (v) => this.navigateAfterRegister(v.token),

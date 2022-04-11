@@ -54,6 +54,10 @@ export class AuthService {
     })
   }
 
+  userIsLogged(): boolean {
+    return this.token ? true : false;
+  }
+
   public get token(): string {
     return this._token;
   }
