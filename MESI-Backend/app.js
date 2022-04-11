@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
  */
 app.use("/auth", userRouter);
 
-app.use("*", (res) => {
+app.use("*", (req, res, next) => {
   res.status(404).json({
     success: "false",
     message: "Page not found",

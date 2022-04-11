@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <h5 class="my-0 mr-md-auto font-weight-normal logo-img">
+    <img src="assets/coffee-beans.png" alt="coffe-logo" width="50" height="60" />
+  </h5>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLinkActive="active" routerLink='/'>Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/register" topbar-left>Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/login" topbar-left>Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/user-board" routerLinkActive="active" topbar-left>Profile</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Store
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Home Coffee</a>
+          <a class="dropdown-item" href="#">Merchandise</a>
+          <a class="dropdown-item" href="#">Food</a>
+          <a class="dropdown-item" href="#">Gift Cards</a>
+        </div>
+      </li>
+      <li class="nat-item">
+        <a class="nav-link" routerLink="/cart" routerLinkActive="active">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path
+              fill="#ffffff"
+              d="M24 3l-.743 2h-1.929l-3.474 12h-13.239l-4.615-11h16.812l-.564 2h-13.24l2.937 7h10.428l3.432-12h4.195zm-15.5 15c-.828 0-1.5.672-1.5 1.5 0 .829.672 1.5 1.5 1.5s1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm6.9-7-1.9 7c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5z" />
+          </svg>
+        </a>
+      </li>
+    </ul>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>

@@ -1,23 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeComponent } from './home.component';
+import { NavBarComponent } from './nav-bar.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ProductsComponent } from 'src/app/components/home/products/products.component';
+import { HttpClientModule } from '@angular/common/http';
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+describe('NavBarComponent', () => {
+  let component: NavBarComponent;
+  let fixture: ComponentFixture<NavBarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ ],
-      declarations: [ HomeComponent ]
+      imports: [ RouterTestingModule, HttpClientModule ],
+      declarations: [ NavBarComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(NavBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

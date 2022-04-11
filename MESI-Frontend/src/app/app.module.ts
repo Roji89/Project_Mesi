@@ -9,15 +9,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HomeComponent } from './views/home/home.component';
-import { ProductsComponent } from './components/products/products.component';
-import { ProductComponent } from './components/product/product.component';
-import { FooterComponent } from './commun/footer/footer.component';
+import { ProductsComponent } from './components/home/products/products.component';
+import { ProductComponent } from './views/product/product.component';
+import { FooterComponent } from './components/commons/footer/footer.component';
 import { BoardAdminComponent } from './profiles/board-admin/board-admin.component';
 import { BoardUserComponent } from './profiles/board-user/board-user.component';
-import { NavBarComponent } from './commun/nav-bar/nav-bar.component';
-import { LoginComponent } from './Auth/login/login.component';
-import { RegisterComponent } from './Auth/register/register.component';
+import { NavBarComponent } from './components/commons/nav-bar/nav-bar.component';
+import { LoginComponent } from './views/login/login.component';
+import { RegisterComponent } from './views/register/register.component';
 import { CartComponent } from './views/cart/cart.component';
+import { CarouselComponent } from './components/home/carousel/carousel.component';
+import { ButtonComponent } from './components/commons/button/button.component';
+import { FormComponent } from './components/commons/form/form.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import { CartComponent } from './views/cart/cart.component';
     ProductsComponent,
     ProductComponent,
     CartComponent,
+    CarouselComponent,
+    ButtonComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
