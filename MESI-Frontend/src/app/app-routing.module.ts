@@ -3,17 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { AuthGuard } from './guards/auth.guard';
-import { BoardUserComponent } from './profiles/board-user/board-user.component';
 import { HomeComponent } from './views/home/home.component';
 import { ProductComponent } from './views/product/product.component';
 import { CartComponent } from './views/cart/cart.component';
+import { ProfileComponent } from './views/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {
-    path: 'user-board',
+    path: 'profile',
     canActivate: [AuthGuard],
-    component: BoardUserComponent,
+    component: ProfileComponent,
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
