@@ -1,24 +1,19 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../models/user.model';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class UserService {
+  private baseUrl: string = 'http://localhost:4000/auth';
+  private userUrl: string = this.baseUrl + '/user/';
 
-  private baseUrl: string = "http://localhost:4000/auth"
-  private userUrl: string = this.baseUrl + '/login';
-
-  constructor(
-    private http: HttpClient
-  ) {}
-
+  constructor(private http: HttpClient) {}
 
   getUserInfos(user: User): Observable<any> {
-    return this.http.get('/' + user.id)
+    const headers = new HttpHeaders({ 'x-access-token': user.token });
+    return this.http.get(this.userUrl + user._id, { headers: headers });
   }
-
 }
