@@ -13,12 +13,14 @@ export class AuthService {
   private loginUrl: string = this.baseUrl + '/login';
   private registerUrl: string = this.baseUrl + '/register';
   private _token: string;
+  private _id: string;
 
   constructor(
     private http: HttpClient,
     private router: Router
     ) {
     this._token = '';
+    this._id = '';
   }
 
   /**
@@ -54,6 +56,11 @@ export class AuthService {
     })
   }
 
+  setUserCredentials(user: User) {
+    this.id = user._id,
+    this.token = user.token
+  }
+
   userIsLogged(): boolean {
     return this.token ? true : false;
   }
@@ -64,5 +71,12 @@ export class AuthService {
   
   public set token(value: string) {
     this._token = value;
+  }
+
+  public get id(): string {
+    return this._id;
+  }
+  public set id(value: string) {
+    this._id = value;
   }
 }
