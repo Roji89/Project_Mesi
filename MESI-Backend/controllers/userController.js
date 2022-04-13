@@ -58,8 +58,9 @@ const login =
         const token = jwt.sign({ user_id: user._id }, process.env.TOKEN_KEY, {
           expiresIn: "7d",
         });
-        await User.findByIdAndUpdate(user._id, { token });
-        res.status(200).send(user);
+        await User.findByIdAndUpdate(user._id, { token: token });
+        const updatedUser = await User.findById(user._id);
+        res.status(200).send(updatedUser);
       } else {
         res.status(400).send("Invalid username or password");
       }
@@ -85,7 +86,6 @@ const getUser = async (req, res) => {
     const userId = req.params.userId;
     const user = await User.findById(userId);
     if (!user) return res.status(400).json({ error: "user doesnt exist" });
-
     res.status(200).json(user);
   } catch (error) {
     console.log("wrong request");
