@@ -37,22 +37,24 @@ export class RegisterComponent implements OnInit {
    */
   onSubmit(): void {
     let user: User = {
+      _id: '',
       email: this.registerForm.value['email'],
-      password: this.registerForm.value['password']
+      password: this.registerForm.value['password'],
+      token: ''
     };
 
     this.authService.register(user).subscribe({
-      next: (v) => this.navigateAfterRegister(v.token),
+      next: (v) => this.navigateAfterRegister(v),
       error: (e) => this.showAlert(e.error),
     });
   }
 
   /**
-   * Set user token then redirect to home page
-   * @param token User token
+   * Set user credentials then redirect to the profile page
+   * @param user User 
    */
-  navigateAfterRegister(token: string): void {
-    this.authService.token = token;
-    this.router.navigate(['']);
+  navigateAfterRegister(user: User): void {
+    this.authService.setUserCredentials(user);
+    this.router.navigate(['profile']);
   }
 }
