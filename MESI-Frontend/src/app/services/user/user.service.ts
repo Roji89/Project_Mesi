@@ -12,8 +12,13 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  getUserInfos(user: User): Observable<any> {
+  getUser(user: User): Observable<any> {
     const headers = new HttpHeaders({ 'x-access-token': user.token });
     return this.http.get(this.userUrl + user._id, { headers: headers });
+  }
+
+  updateUser(user: User): Observable<any> {
+    const headers = new HttpHeaders({ 'x-access-token': user.token });
+    return this.http.put(this.userUrl + user._id, user, { headers: headers });
   }
 }
