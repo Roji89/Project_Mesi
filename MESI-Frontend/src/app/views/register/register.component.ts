@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
     };
 
     this.authService.register(user).subscribe({
-      next: (v) => this.navigateAfterRegister(v),
+      next: (user) => this.navigateAfterRegister(user),
       error: (e) => this.showAlert(e.error),
     });
   }
