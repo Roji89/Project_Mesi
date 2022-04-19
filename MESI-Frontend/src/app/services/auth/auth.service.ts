@@ -61,6 +61,11 @@ export class AuthService {
     this.token = user.token
   }
 
+  clearUserCredentials(): void {
+    this.id = '';
+    this.token = '';
+  }
+
   userIsLogged(): boolean {
     return this.token ? true : false;
   }
