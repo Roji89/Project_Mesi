@@ -37,14 +37,17 @@
           </svg>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/register" topbar-left>Register</a>
+      <li class="nav-item" *ngIf="!isUserLoggedIn">
+        <a class="nav-link" routerLinkActive="active" routerLink="/register" topbar-right>Register</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/login" topbar-left>Login</a>
+      <li class="nav-item" *ngIf="!isUserLoggedIn">
+        <a class="nav-link" routerLinkActive="active" routerLink="/login" topbar-right>Login</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="profile" routerLinkActive="active" topbar-left>Profile</a>
+      <li class="nav-item" *ngIf="isUserLoggedIn">
+        <a class="nav-link" routerLink="profile" routerLinkActive="active" topbar-right>My Profile</a>
+      </li>
+      <li class="nav-item" *ngIf="isUserLoggedIn">
+        <a class="nav-link" routerLink="/" routerLinkActive="active" (click)="onClickLogout()" topbar-right>Logout</a>
       </li>
     </ul>
   </div>
