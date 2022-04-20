@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -21,6 +21,7 @@ import { CartComponent } from './views/cart/cart.component';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
 import { ButtonComponent } from './components/commons/button/button.component';
 import { FormComponent } from './components/commons/form/form.component';
+import { ProfileComponent } from './views/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { FormComponent } from './components/commons/form/form.component';
     CarouselComponent,
     ButtonComponent,
     FormComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

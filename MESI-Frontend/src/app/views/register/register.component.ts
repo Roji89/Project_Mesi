@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { User } from '../../models/user.model';
+import { DataSharingService } from '../../services/data-sharing/data-sharing.service';
 
 @Component({
   selector: 'app-register',
@@ -11,8 +12,6 @@ import { User } from '../../models/user.model';
 })
 export class RegisterComponent implements OnInit {
   registerForm = this.formBuilder.group({
-    firstName: '',
-    lastName: '',
     email: '',
     password: '',
   });
@@ -21,7 +20,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private dataSharingService: DataSharingService
   ) {}
 
   ngOnInit(): void {}
@@ -38,25 +38,26 @@ export class RegisterComponent implements OnInit {
    * Submit register form
    */
   onSubmit(): void {
-    let user: User = new User(
-      this.registerForm.value['firstName'],
-      this.registerForm.value['lastName'],
-      this.registerForm.value['email'],
-      this.registerForm.value['password']
-    );
+    let user: User = {
+      _id: '',
+      email: this.registerForm.value['email'],
+      password: this.registerForm.value['password'],
+      token: ''
+    };
 
     this.authService.register(user).subscribe({
-      next: (v) => this.navigateAfterRegister(v.token),
+      next: (user) => this.navigateAfterRegister(user),
       error: (e) => this.showAlert(e.error),
     });
   }
 
   /**
-   * Set user token then redirect to home page
-   * @param token User token
+   * Set user credentials then redirect to the profile page
+   * @param user User 
    */
-  navigateAfterRegister(token: string): void {
-    this.authService.token = token;
-    this.router.navigate(['']);
+  navigateAfterRegister(user: User): void {
+    this.authService.setUserCredentials(user);
+    this.dataSharingService.userIsLoggedIn.next(true);
+    this.router.navigate(['profile']);
   }
 }

@@ -1,0 +1,26 @@
+name: CI - Build Frontend
+
+on: 
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build_front:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up node 
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./MESI-Frontend
+
+      - name: Build app 
+        run: npm run build
+        working-directory: ./MESI-Frontend

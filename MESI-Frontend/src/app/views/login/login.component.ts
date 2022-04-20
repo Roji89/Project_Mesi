@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { User } from '../../models/user.model';
+import { DataSharingService } from '../../services/data-sharing/data-sharing.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +22,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private dataSharingService:DataSharingService
   ) {}
   
   ngOnInit(): void {}
@@ -39,7 +42,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.authService
       .login(this.loginForm.value["email"], this.loginForm.value["password"]).subscribe({
-        next: (v) => this.navigateAfterLogin(v.token),
+        next: (user) => this.navigateAfterLogin(user),
         error: (e) => {
         e.status !== 0
           ? this.showAlert(e.error)
@@ -48,11 +51,12 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   * Set user token then redirect to home page
-   * @param token User token
+   * Set user credentials then redirect to the profile page
+   * @param user User 
    */
-  navigateAfterLogin(token: string): void {
-    this.authService.token = token;
-    this.router.navigate([''])
+  navigateAfterLogin(user: User): void {
+    this.authService.setUserCredentials(user);
+    this.dataSharingService.userIsLoggedIn.next(true);
+    this.router.navigate(['profile']);
   }
 }
