@@ -108,13 +108,11 @@ const updateUser = async (req, res) => {
         return res.status(400).json({ error: "Incorrect actual password" });
       }
     }
-
     // Update user informations
     await User.findByIdAndUpdate(userId, update);
-    const updatedUser = await User.findById(userId);
-    res
+    return res
       .status(200)
-      .json({ user: updatedUser, message: "user has been updated" });
+      .json({ data: User, message: "user has been updated" });
   } catch (error) {
     res.status(400).json({ error: "couldnt update user" });
   }
