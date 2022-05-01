@@ -1,9 +1,6 @@
 const User = require("../model/user");
-const auth = require("../middleware/auth");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const path = require("path");
-const user = require("../model/user");
 
 /*
  *******Register********
@@ -99,7 +96,7 @@ const updateUser = async (req, res) => {
     const update = req.body;
     const userId = req.params.userId;
     await User.findByIdAndUpdate(userId, update);
-    res.status(200).json({ data: user, message: "user has been updated" });
+    res.status(200).json({ data: User, message: "user has been updated" });
   } catch (error) {
     res.status(400).json({ message: "couldnt update user" });
   }

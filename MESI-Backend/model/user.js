@@ -21,6 +21,7 @@ const userSchema = new mongoose.Schema(
       default: "user",
       enum: ["user", "admin", "superadmin"],
     },
+    products: [{ type: mongoose.Schema.Types.ObjectId, ref: "product" }],
   },
   { timestamps: true }
 );
