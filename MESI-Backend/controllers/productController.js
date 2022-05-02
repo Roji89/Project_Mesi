@@ -26,7 +26,6 @@ const addProduct = async (req, res) => {
           `Product ${productExisted} Already Exist. Please check the products list`
         );
     }
-    console.log("before create");
     const product = await Product.create({
       name: name.toUpperCase(),
       price: price,
@@ -35,8 +34,11 @@ const addProduct = async (req, res) => {
       user: userID,
       ProductCode: ProductCode,
     });
-    console.log("after create");
-    return res.status(200).json(product);
+    product.save().then(() => {
+      user.products.push(product);
+      user.save();
+      return res.status(200).json(product);
+    });
   } catch (error) {
     return res.status(500).send("can't create product");
   }
