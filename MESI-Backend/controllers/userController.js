@@ -1,9 +1,6 @@
 const User = require("../model/user");
-const auth = require("../middleware/auth");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const path = require("path");
-const user = require("../model/user");
 
 /*
  *******Register********
@@ -96,30 +93,26 @@ const getUser = async (req, res) => {
  */
 const updateUser = async (req, res) => {
   try {
-
     const update = req.body;
     const userId = req.params.userId;
 
     // Update user password
     if (update.old_password && update.password) {
-
       const user = await User.findById(userId);
 
       if (await bcrypt.compare(update.old_password, user.password)) {
-
         encryptedPassword = await bcrypt.hash(update.password, 10);
-        await User.findByIdAndUpdate(userId, { password: encryptedPassword});
-        return res.status(200).json({ message: "Password has been updated" })
-
+        await User.findByIdAndUpdate(userId, { password: encryptedPassword });
+        return res.status(200).json({ message: "Password has been updated" });
       } else {
         return res.status(400).json({ error: "Incorrect actual password" });
       }
     }
-
     // Update user informations
     await User.findByIdAndUpdate(userId, update);
-    const updatedUser = await User.findById(userId);
-    res.status(200).json({ user: updatedUser, message: "user has been updated" });
+    return res
+      .status(200)
+      .json({ data: User, message: "user has been updated" });
   } catch (error) {
     res.status(400).json({ error: "couldnt update user" });
   }
