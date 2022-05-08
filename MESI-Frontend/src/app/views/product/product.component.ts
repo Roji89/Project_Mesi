@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/products/product.service';
+import { environment } from 'src/environments/environment';
 import { CartService } from '../../services/cart/cart.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { CartService } from '../../services/cart/cart.service';
 })
 export class ProductComponent implements OnInit {
 
+  BASE_URL: string = environment.API_URL
   product?: Product;
   addedToCart: boolean = false;
   quantity: number = 1;
@@ -32,7 +34,7 @@ export class ProductComponent implements OnInit {
   }
 
   getProduct() {
-    const id = parseInt(this.route.snapshot.paramMap.get('id')!);
+    const id = this.route.snapshot.paramMap.get('id')!;
     this.productService
       .getProduct(id)
       .subscribe((product: Product) => (this.product = product));
