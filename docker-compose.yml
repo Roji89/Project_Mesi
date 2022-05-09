@@ -1,7 +1,7 @@
 services:
   mongo: 
     image: mongo
-    restart: always
+    restart: unless-stopped
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
@@ -10,12 +10,14 @@ services:
 
   backend:
     build: ./MESI-Backend
-    restart: always
+    restart: unless-stopped
     ports:
       - 4000:4000
+    links:
+      - mongo
   
   frontend:
     build: ./MESI-Frontend
-    restart: always
+    restart: unless-stopped
     ports:
       - 80:80
