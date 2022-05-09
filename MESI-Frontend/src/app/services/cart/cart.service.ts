@@ -20,9 +20,9 @@ export class CartService {
 
     const productTotalPrice = product.price * quantity
 
-    if (this.cart.items.filter(item => item.product.id === product.id).length !== 0) {
+    if (this.cart.items.filter(item => item.product._id === product._id).length !== 0) {
       this.cart.items.findIndex(item => {
-        if (item.product.id === product.id) {
+        if (item.product._id === product._id) {
           item.quantity++;
           item.totalPrice = product.price * item.quantity
       }});

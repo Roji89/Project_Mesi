@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart/cart.service';
 import { Cart, CartItem } from '../../models/cart.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -9,6 +10,7 @@ import { Cart, CartItem } from '../../models/cart.model';
 })
 export class CartComponent implements OnInit {
 
+  BASE_URL: string = environment.API_URL
   cart!: Cart;
   
   constructor(private cartService: CartService) {}
@@ -34,7 +36,7 @@ export class CartComponent implements OnInit {
 
     // Update cart item
     this.cart.items.map((cartItem) => {
-      if (cartItem.product.id === item.product.id) {
+      if (cartItem.product._id === item.product._id) {
         cartItem.quantity = newQuantity;
         cartItem.totalPrice = newProductTotalPrice
       }

@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private baseUrl: string = "http://localhost:4000/auth"
+  private baseUrl: string = environment.API_URL + "auth"
   private loginUrl: string = this.baseUrl + '/login';
   private registerUrl: string = this.baseUrl + '/register';
   private _token: string;

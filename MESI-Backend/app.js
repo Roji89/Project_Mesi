@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
  */
 app.use("/auth", userRouter);
 app.use("/product", productRouter);
+app.use("/public", express.static('public'))
 
 app.use("*", (req, res, next) => {
   res.status(404).json({

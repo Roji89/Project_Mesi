@@ -9,22 +9,20 @@ productRouter.post(
   productController.addProduct
 );
 productRouter.get(
-  "/product/:productId",
-  accessController.adminAccess(),
+  "/:productId",
   productController.getProduct
 );
 productRouter.get(
-  "/products",
-  accessController.adminAccess(),
+  "/",
   productController.getProducts
 );
 productRouter.put(
-  "/product/:productId",
+  "/:productId",
   accessController.adminAccess(),
   productController.editProduct
 );
 productRouter.delete(
-  "/product/:productId",
+  "/:productId",
   accessController.adminAccess(),
   productController.deleteProduct
 );
