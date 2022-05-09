@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 //this is the file for the cart e-commerce
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
@@ -36,6 +37,9 @@ const CartSchema = new Schema({
 })
 module.exports = mongoose.model("Cart", CartSchema);
 // module.exports = mongoose.model("Product", CartSchema);
+=======
+//this is the file for the cart e-commerce
+>>>>>>> 01f7ed4 (test)
 =======
 //this is the file for the cart e-commerce
 >>>>>>> 01f7ed4 (test)
