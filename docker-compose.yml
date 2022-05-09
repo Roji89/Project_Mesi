@@ -1,0 +1,21 @@
+services:
+  mongo: 
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports: 
+      - 27017:27017
+
+  backend:
+    build: ./MESI-Backend
+    restart: always
+    ports:
+      - 4000:4000
+  
+  frontend:
+    build: ./MESI-Frontend
+    restart: always
+    ports:
+      - 80:80
