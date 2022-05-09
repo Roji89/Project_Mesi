@@ -1,4 +1,3 @@
-//this is the file for the cart e-commerce
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 let ItemSchema = new Schema({
