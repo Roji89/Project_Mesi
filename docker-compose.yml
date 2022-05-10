@@ -1,0 +1,36 @@
+services:
+
+  mongo: 
+    image: mongo
+    container_name: mesi-mongo
+    restart: unless-stopped
+    volumes:
+      - /Users/thibault/MESI/data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports: 
+      - 27017:27017
+
+  backend:
+    build: ./MESI-Backend
+    container_name: mesi-backend
+    depends_on: 
+      - mongo
+    restart: unless-stopped
+    environment: 
+      TOKEN_KEY: PHCAD8UeuWt43X5BboSaLKOdTIhGf7yE
+      MONGO_URI: mongodb://root:example@mongo:27017
+      MONGO_ROOT_USER: root
+      MONGO_ROOT_PASSWORD: example
+    ports:
+      - 4000:4000
+    links:
+      - mongo
+  
+  frontend:
+    build: ./MESI-Frontend
+    container_name: mesi-frontend
+    restart: unless-stopped
+    ports:
+      - 80:80
