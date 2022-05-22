@@ -1,5 +1,6 @@
 const { compare } = require("bcryptjs");
 const verifyToken = require("../middleware/auth");
+const escapeRegExp = require('../helpers/regex')
 const Product = require("../model/product");
 const User = require("../model/user");
 
@@ -79,6 +80,24 @@ const getProduct = async (req, res) => {
   } catch (error) {}
 };
 /********************
+ * GET products by research, with pagination
+ ********************/
+const getProductsByResearch = async (req, res) => {
+  const researchText = escapeRegExp(req.params.research);
+
+  if (!researchText) {
+    return res.status(400).json({ error: "Bad request, parameter for research is missing"});
+  }
+  const regex = new RegExp(researchText, 'im');
+  
+  try {
+    const products = await Product.find({name: { $regex: regex}});
+    return res.status(200).json({result: products});
+  } catch (error) {
+    return res.status(500).json({ error: "Something wrong happened. Please try again later"})
+  }
+};
+/********************
  * DELETE Product
  ********************/
 const deleteProduct = async (req, res) => {
@@ -101,6 +120,7 @@ module.exports = {
   addProduct,
   editProduct,
   getProduct,
+  getProductsByResearch,
   getProducts,
   deleteProduct,
 };
