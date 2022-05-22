@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
-import { ProductService } from 'src/app/services/products/product.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -11,20 +10,10 @@ import { environment } from 'src/environments/environment';
 export class ProductsComponent implements OnInit {
 
   BASE_URL: string = environment.API_URL;
-  products: Product[] = [];
+  @Input() products: Product[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.getProducts();
   }
-  
-  getProducts() {
-    this.productService.productList()
-    .subscribe({
-      next: (data: any) => {
-        this.products = data.data
-      },
-      error: (e) => console.log(e)})
-    }
 }
