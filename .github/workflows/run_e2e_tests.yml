@@ -1,0 +1,33 @@
+name: CI - E2E Tests
+
+on: 
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  run_e2e_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up node 
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Start containers 
+        run: docker-compose up -d
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./MESI-Test
+
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+        working-directory: ./MESI-Test
+
+      - name: Run tests
+        run: npm test
+        working-directory: ./MESI-Test
