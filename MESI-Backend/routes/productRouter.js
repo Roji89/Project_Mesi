@@ -16,6 +16,10 @@ productRouter.get(
   "/",
   productController.getProducts
 );
+productRouter.get(
+  "/search/:research",
+  productController.getProductsByResearch
+);
 productRouter.put(
   "/:productId",
   accessController.adminAccess(),
