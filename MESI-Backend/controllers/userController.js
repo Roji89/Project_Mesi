@@ -11,7 +11,7 @@ const register =
     try {
       const { email, password, role } = req.body;
       if (!(email && password)) {
-        res.status(400).send("All input is required");
+        return res.status(400).send("All input is required");
       }
       const oldUser = await User.findOne({ email });
       if (oldUser) {
