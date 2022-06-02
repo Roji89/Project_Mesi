@@ -1,7 +1,8 @@
 const { compare } = require("bcryptjs");
-const verifyToken = require("../middleware/auth");
 const Product = require("../model/product");
 const User = require("../model/user");
+const fs = require("fs");
+const { upload } = require("../middleware/multer");
 
 /********************
  * ADD new Product
@@ -13,26 +14,39 @@ const addProduct = async (req, res) => {
     const user = await User.findOne({ token });
     const userID = user._id;
 
-    const { name, price, description, image, ProductCode } = req.body;
-    const productExisted = await Product.findOne({ ProductCode });
+    // const img = fs.readFileSync(req.file.path);
+    // const encode_img = img.toString();
+    // const image = {
+    //   data: fs.readFileSync(
+    //     path.join(__dirname + "/uploads/" + req.file.filename)
+    //   ),
+    //   contentType: req.file.mimetype,
+    // };
+    // const { name, price, description, ProductCode } = req.body;
+    // const productExisted = await Product.findOne({ ProductCode });
 
-    if (!(name && price && description && image && ProductCode)) {
-      return res.status(400).send("All inputs are required");
-    }
-    if (productExisted) {
-      return res
-        .status(409)
-        .send(
-          `Product ${productExisted} Already Exist. Please check the products list`
-        );
-    }
+    // if (!(name && price && description && ProductCode && image)) {
+    //   return res.status(400).send("All inputs are required");
+    // }
+    // if (productExisted) {
+    //   return res
+    //     .status(409)
+    //     .send(
+    //       `Product ${productExisted} Already Exist. Please check the products list`
+    //     );
+    // }
     const product = await Product.create({
-      name: name.toUpperCase(),
-      price: price,
-      description: description,
-      image: image,
-      user: userID,
-      ProductCode: ProductCode,
+      name: req.body.name.toUpperCase(),
+      price: req.body.price,
+      description: req.body.description,
+      // user: userID,
+      ProductCode: req.body.ProductCode,
+      image: {
+        data: fs.readFileSync(
+          path.join(__dirname + "/uploads/" + req.file.filename)
+        ),
+        contentType: "image/png",
+      },
     });
     product.save().then(() => {
       user.products.push(product);
@@ -98,7 +112,7 @@ const deleteProduct = async (req, res) => {
  *
  */
 module.exports = {
-  addProduct,
+  // addProduct,
   editProduct,
   getProduct,
   getProducts,
