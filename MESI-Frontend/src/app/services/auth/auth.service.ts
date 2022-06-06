@@ -1,7 +1,8 @@
+import { Role } from './../../models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { environment } from 'src/environments/environment';
 
@@ -15,13 +16,16 @@ export class AuthService {
   private registerUrl: string = this.baseUrl + '/register';
   private _token: string;
   private _id: string;
+  private role: string;
+  isLogin = false;
 
   constructor(
     private http: HttpClient,
     private router: Router
-    ) {
+  ) {
     this._token = '';
     this._id = '';
+    this.role = '';
   }
 
   /**
@@ -30,7 +34,8 @@ export class AuthService {
    * @param password User password
    * @returns Observable
    */
-  login(email: string, password: string): Observable<any>{
+  login(email: string, password: string): Observable<any> {
+    this.isLogin = true;
     return this.http.post(this.loginUrl, {
       email: email,
       password: password
@@ -43,6 +48,7 @@ export class AuthService {
   logout(): void {
     this._token = '';
     this.router.navigate(['']);
+    this.isLogin = false;
   }
 
   /**
@@ -57,9 +63,18 @@ export class AuthService {
     })
   }
 
+  isLoggedIn() {
+    const loggedIn = localStorage.getItem('STATE');
+    if (loggedIn == 'true')
+      this.isLogin = true;
+    else
+      this.isLogin = false;
+    return this.isLogin;
+  }
+
   setUserCredentials(user: User) {
     this.id = user._id,
-    this.token = user.token
+      this.token = user.token
   }
 
   clearUserCredentials(): void {
@@ -71,10 +86,18 @@ export class AuthService {
     return this.token ? true : false;
   }
 
+  haveRoleAccess(): boolean {
+    const role = localStorage.getItem('role');
+    if (role === 'superadmin') {
+      return true
+    }
+    else return false
+  }
+
   public get token(): string {
     return this._token;
   }
-  
+
   public set token(value: string) {
     this._token = value;
   }
@@ -85,4 +108,5 @@ export class AuthService {
   public set id(value: string) {
     this._id = value;
   }
+
 }

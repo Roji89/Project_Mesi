@@ -11,7 +11,7 @@ export class UserService {
   private baseUrl: string = environment.API_URL + 'auth';
   private userUrl: string = this.baseUrl + '/user/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getUser(user: User): Observable<any> {
     const headers = new HttpHeaders({ 'x-access-token': user.token });
@@ -22,4 +22,6 @@ export class UserService {
     const headers = new HttpHeaders({ 'x-access-token': user.token });
     return this.http.put(this.userUrl + user._id, user, { headers: headers });
   }
+
+
 }

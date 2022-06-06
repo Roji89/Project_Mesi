@@ -1,0 +1,31 @@
+<div style="display: flex; flex-direction: column; align-content: center;">
+    <h1 style="text-align: center;">Interface Admin</h1>
+    <button class="btn btn-danger" [routerLink]="['/product/add']">ADD PRODUCT</button>
+</div>
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Product-code</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">More</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr app-super-line *ngFor="let product of products">
+            <td>{{product.ProductCode}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.price}}</td>
+            <td>
+                <button class="mx-2 mt-2 btn btn-outline-dark" [routerLink]="['/product', product._id]">
+                    Edit
+                </button>
+                <button class="mx-2 mt-2 btn btn-outline-dark">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

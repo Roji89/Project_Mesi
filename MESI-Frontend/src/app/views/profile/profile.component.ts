@@ -13,13 +13,13 @@ export class ProfileComponent implements OnInit {
 
   message: string = '';
 
-  profileForm: FormGroup =  this.formBuilder.group({
+  profileForm: FormGroup = this.formBuilder.group({
     firstName: '',
     lastName: '',
     email: '',
   })
 
-  passwordForm: FormGroup =  this.formBuilder.group({
+  passwordForm: FormGroup = this.formBuilder.group({
     oldPassword: '',
     password: ''
   })
@@ -29,14 +29,14 @@ export class ProfileComponent implements OnInit {
     first_name: '',
     last_name: '',
     email: '',
-    token: ''
+    token: '',
   };
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private userService: UserService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getUserInfos();
@@ -56,7 +56,7 @@ export class ProfileComponent implements OnInit {
       token: this.authService.token
     }).subscribe({
       next: (user) => {
-        this.profileForm =  this.formBuilder.group({
+        this.profileForm = this.formBuilder.group({
           firstName: user.first_name,
           lastName: user.last_name,
           email: user.email,
@@ -79,12 +79,10 @@ export class ProfileComponent implements OnInit {
       token: this.authService.token
     }
 
-    console.log(user)
-    
     this.userService.updateUser(user).subscribe({
       next: (data) => {
         this.showAlert(data.message)
-        this.profileForm =  this.formBuilder.group({
+        this.profileForm = this.formBuilder.group({
           firstName: data.user.first_name,
           lastName: data.user.last_name,
           email: data.user.email
@@ -97,18 +95,18 @@ export class ProfileComponent implements OnInit {
   /**
    * Submit password data
    */
-   onSubmitPasswordForm() {
+  onSubmitPasswordForm() {
     let user: User = {
       _id: this.authService.id,
       token: this.authService.token,
       old_password: this.passwordForm.value['oldPassword'],
       password: this.passwordForm.value['password']
     }
-    
+
     this.userService.updateUser(user).subscribe({
       next: (data) => {
         this.showAlert(data.message)
-        this.passwordForm =  this.formBuilder.group({
+        this.passwordForm = this.formBuilder.group({
           oldPassword: '',
           password: ''
         });

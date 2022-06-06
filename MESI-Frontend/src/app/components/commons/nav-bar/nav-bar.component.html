@@ -46,6 +46,9 @@
       <li class="nav-item" *ngIf="isUserLoggedIn">
         <a class="nav-link" routerLink="profile" routerLinkActive="active" topbar-right>My Profile</a>
       </li>
+      <li class="nav-item" *ngIf="isUserAdmin">
+        <a class="nav-link" routerLink="admin" routerLinkActive="active" topbar-right>Admin Dashboard</a>
+      </li>
       <li class="nav-item" *ngIf="isUserLoggedIn">
         <a class="nav-link" routerLink="/" routerLinkActive="active" (click)="onClickLogout()" topbar-right>Logout</a>
       </li>

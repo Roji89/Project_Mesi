@@ -11,19 +11,22 @@ import { AuthService } from '../../../services/auth/auth.service';
 export class NavBarComponent implements OnInit {
 
   isUserLoggedIn?: boolean;
+  isUserAdmin?: boolean;
 
   constructor(
     private authService: AuthService,
     private dataSharingService: DataSharingService,
     private router: Router
   ) {
-    this.dataSharingService.userIsLoggedIn.subscribe(value => this.isUserLoggedIn = value)
+    this.dataSharingService.userIsLoggedIn.subscribe(value => this.isUserLoggedIn = value);
+    this.dataSharingService.userIsLoggedIn.subscribe(value => this.isUserAdmin = value);
+
   }
 
   ngOnInit(): void {
   }
 
-  onClickLogout(): void{
+  onClickLogout(): void {
     this.authService.clearUserCredentials();
     this.dataSharingService.userIsLoggedIn.next(false);
   }
