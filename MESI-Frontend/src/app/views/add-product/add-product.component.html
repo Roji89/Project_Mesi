@@ -1,5 +1,5 @@
-<app-form title="Add-Product">
-    <form (ngSubmit)="onAddProduct()">
+<app-form title="Add-Product" *ngIf="getUserRole()">
+    <form [formGroup]="addProductForm" (ngSubmit)="onAddProduct()">
         <div class="form-group">
             <label>Name</label>
             <input type="text" class="form-control" formControlName="name" placeholder="Enter name of product"

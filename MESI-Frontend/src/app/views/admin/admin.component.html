@@ -1,6 +1,6 @@
-<div style="display: flex; flex-direction: column; align-content: center;">
+<div style="display: flex; flex-direction: column; align-content: center;" *ngIf="getUserRole()">
     <h1 style="text-align: center;">Interface Admin</h1>
-    <button class="btn btn-danger" [routerLink]="['/product/add']">ADD PRODUCT</button>
+    <button class="btn btn-danger" routerLinkActive="active" routerLink="/product/add">ADD </button>
 </div>
 <table class="table">
     <thead class="table-dark">
@@ -13,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr app-super-line *ngFor="let product of products">
+        <tr app-super-line *ngFor="let product of products" [id]="product._id">
             <td>{{product.ProductCode}}</td>
             <td>{{product.name}}</td>
             <td>{{product.description}}</td>

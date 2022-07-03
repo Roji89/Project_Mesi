@@ -1,4 +1,3 @@
-import { Role } from './../../models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -16,7 +15,7 @@ export class AuthService {
   private registerUrl: string = this.baseUrl + '/register';
   private _token: string;
   private _id: string;
-  private role: string;
+  private _role: string;
   isLogin = false;
 
   constructor(
@@ -25,7 +24,7 @@ export class AuthService {
   ) {
     this._token = '';
     this._id = '';
-    this.role = '';
+    this._role = '';
   }
 
   /**
@@ -38,7 +37,7 @@ export class AuthService {
     this.isLogin = true;
     return this.http.post(this.loginUrl, {
       email: email,
-      password: password
+      password: password,
     })
   }
 
@@ -74,12 +73,14 @@ export class AuthService {
 
   setUserCredentials(user: User) {
     this.id = user._id,
-      this.token = user.token
+      this.token = user.token,
+      this._role = user.role
   }
 
   clearUserCredentials(): void {
     this.id = '';
     this.token = '';
+    this._role = '';
   }
 
   userIsLogged(): boolean {
@@ -94,6 +95,7 @@ export class AuthService {
     else return false
   }
 
+
   public get token(): string {
     return this._token;
   }
@@ -105,8 +107,18 @@ export class AuthService {
   public get id(): string {
     return this._id;
   }
+  public get roleUser(): string {
+    return this._role;
+  }
   public set id(value: string) {
     this._id = value;
   }
+  isAdmin(): boolean {
+    if (this.roleUser === 'superadmin') {
+      return true
+    }
+    else return false;
+  }
+
 
 }

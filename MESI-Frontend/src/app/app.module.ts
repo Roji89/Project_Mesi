@@ -24,6 +24,7 @@ import { FormComponent } from './components/commons/form/form.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { AdminComponent } from './views/admin/admin.component';
 import { AddProductComponent } from './views/add-product/add-product.component';
+import { EditProductComponent } from './views/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { AddProductComponent } from './views/add-product/add-product.component';
     ProfileComponent,
     AdminComponent,
     AddProductComponent,
+    EditProductComponent,
   ],
   imports: [
     BrowserModule,

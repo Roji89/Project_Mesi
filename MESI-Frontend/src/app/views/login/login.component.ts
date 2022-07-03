@@ -23,10 +23,10 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private dataSharingService:DataSharingService
-  ) {}
-  
-  ngOnInit(): void {}
+    private dataSharingService: DataSharingService
+  ) { }
+
+  ngOnInit(): void { }
 
   showAlert(message: string): void {
     this.error = message
@@ -44,10 +44,11 @@ export class LoginComponent implements OnInit {
       .login(this.loginForm.value["email"], this.loginForm.value["password"]).subscribe({
         next: (user) => this.navigateAfterLogin(user),
         error: (e) => {
-        e.status !== 0
-          ? this.showAlert(e.error)
-          : this.showAlert("No network") // Handle network error
-        }})
+          e.status !== 0
+            ? this.showAlert(e.error)
+            : this.showAlert("No network") // Handle network error
+        }
+      })
   }
 
   /**
@@ -58,5 +59,8 @@ export class LoginComponent implements OnInit {
     this.authService.setUserCredentials(user);
     this.dataSharingService.userIsLoggedIn.next(true);
     this.router.navigate(['profile']);
+    if (this.authService.isAdmin()) {
+      this.dataSharingService.userIsAdmin.next(true)
+    }
   }
 }

@@ -22,9 +22,9 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private dataSharingService: DataSharingService
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   showAlert(message: string): void {
     this.error = message
@@ -42,7 +42,8 @@ export class RegisterComponent implements OnInit {
       _id: '',
       email: this.registerForm.value['email'],
       password: this.registerForm.value['password'],
-      token: ''
+      token: '',
+      role: 'user',
     };
 
     this.authService.register(user).subscribe({

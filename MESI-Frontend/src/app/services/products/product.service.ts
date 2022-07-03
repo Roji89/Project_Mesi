@@ -2,6 +2,7 @@ import { Product } from 'src/app/models/product.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
@@ -11,9 +12,13 @@ export class ProductService {
   private baseUrl: string = environment.API_URL + "product"
   private addUrl: string = this.baseUrl + '/add';
   private editUrl: string = this.baseUrl + '/:productId';
-  product: Product[] = [];
+  products: Product[] = [];
+  private _id: string;
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient, private router: Router
+  ) {
+    this._id = ''
+  }
 
   productList(): Observable<Product[]> {
     return this.http.get<Product[]>(this.baseUrl);
@@ -36,6 +41,38 @@ export class ProductService {
       image: product.image,
       ProductCode: product.ProductCode,
     })
+  }
+  public get id(): string {
+    return this._id;
+  }
+  public set id(value: string) {
+    this._id = value;
+  }
+
+  /**
+    *
+    * @param productId
+    * @returns
+    */
+  getProductById(product: Product): Observable<any> {
+
+    return this.http.get(this.editUrl + product._id);
+
+    // return new Promise<Product>(
+    //   (res, rej) => {
+    //     for (let product of this.products) {
+    //       if (product._id === productId) {
+    //         res(product);
+    //         break;
+    //       }
+    //     }
+    //   }
+    // );
+  }
+
+  updateProduct(product: Product): Observable<any> {
+    return this.http.put(this.editUrl + product._id, product);
+
   }
 
 }

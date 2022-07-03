@@ -4,6 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/products/product.service';
 import { Product } from 'src/app/models/product.model';
 import { environment } from 'src/environments/environment';
+import { User } from '../../models/user.model';
+import { UserService } from '../../services/user/user.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-admin',
@@ -16,11 +19,13 @@ export class AdminComponent implements OnInit {
   products: Product[] = [];
 
 
-  constructor(private productService: ProductService, private router: Router,
+  constructor(private productService: ProductService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
     this.getProducts();
+    this.getUserRole();
   }
 
   getProducts() {
@@ -33,4 +38,14 @@ export class AdminComponent implements OnInit {
       })
   }
 
+  getUserRole(): boolean {
+    if (this.authService.isAdmin()) {
+      return true
+    }
+    else return false;
+  }
+
+  deleteProduct() {
+
+  }
 }

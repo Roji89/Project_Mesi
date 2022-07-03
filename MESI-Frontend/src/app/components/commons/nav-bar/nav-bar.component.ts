@@ -19,7 +19,7 @@ export class NavBarComponent implements OnInit {
     private router: Router
   ) {
     this.dataSharingService.userIsLoggedIn.subscribe(value => this.isUserLoggedIn = value);
-    this.dataSharingService.userIsLoggedIn.subscribe(value => this.isUserAdmin = value);
+    this.dataSharingService.userIsAdmin.subscribe(value => this.isUserAdmin = value);
 
   }
 

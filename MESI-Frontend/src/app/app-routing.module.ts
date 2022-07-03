@@ -10,6 +10,7 @@ import { ProductComponent } from './views/product/product.component';
 import { CartComponent } from './views/cart/cart.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { AdminComponent } from './views/admin/admin.component';
+import { EditProductComponent } from './views/edit-product/edit-product.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,16 +22,16 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'products/:id', component: ProductComponent },
+  { path: 'product/:id', component: EditProductComponent },
   { path: 'cart', component: CartComponent },
   {
     path: 'admin',
     component: AdminComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     data: { role: ['superadmin'] }
   },
   {
-    path: 'admin/addProduct',
+    path: 'product/add',
     component: AddProductComponent,
   }
 ];

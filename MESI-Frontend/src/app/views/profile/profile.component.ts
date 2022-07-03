@@ -30,6 +30,7 @@ export class ProfileComponent implements OnInit {
     last_name: '',
     email: '',
     token: '',
+    role: '',
   };
 
   constructor(
@@ -53,7 +54,8 @@ export class ProfileComponent implements OnInit {
   getUserInfos(): void {
     this.userService.getUser({
       _id: this.authService.id,
-      token: this.authService.token
+      token: this.authService.token,
+      role: this.authService.roleUser,
     }).subscribe({
       next: (user) => {
         this.profileForm = this.formBuilder.group({
@@ -76,7 +78,8 @@ export class ProfileComponent implements OnInit {
       first_name: this.profileForm.value['firstName'],
       last_name: this.profileForm.value['lastName'],
       email: this.profileForm.value['email'],
-      token: this.authService.token
+      token: this.authService.token,
+      role: this.authService.roleUser,
     }
 
     this.userService.updateUser(user).subscribe({
@@ -100,7 +103,8 @@ export class ProfileComponent implements OnInit {
       _id: this.authService.id,
       token: this.authService.token,
       old_password: this.passwordForm.value['oldPassword'],
-      password: this.passwordForm.value['password']
+      password: this.passwordForm.value['password'],
+      role: this.authService.roleUser,
     }
 
     this.userService.updateUser(user).subscribe({
