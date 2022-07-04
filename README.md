@@ -4,6 +4,11 @@
 
 # git
 
+## git structue
+
+- main
+- develop
+
 ## create branch:
 
 ### git checkout develop
@@ -23,6 +28,8 @@
 # for the moment we can use the fake server to do CRUD
 
 https://github.com/Roji89/demo-server-MESI
+
+json-server db.json
 
 # Angular structure:
 

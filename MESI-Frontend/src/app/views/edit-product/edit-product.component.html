@@ -1,0 +1,21 @@
+<app-form title="Edit-Product" *ngIf="getUserRole()">
+    <form [formGroup]="editProductForm" (ngSubmit)="onEditProduct()" autocomplete="off">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" formControlName="name" #name />
+        </div>
+        <div class="form-group">
+            <label>Price</label>
+            <input type="number" class="form-control" formControlName="price" required #price />
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" class="form-control" formControlName="description" required #description />
+        </div>
+        <div class="form-group">
+            <label>product-code</label>
+            <input type="text" class="form-control" formControlName="ProductCode" required #ProductCodes />
+        </div>
+        <app-button type="submit">Submit</app-button>
+    </form>
+</app-form>

@@ -1,0 +1,13 @@
+.background-color {
+  background-color: #1e3932;
+}
+.footer {
+  display: flex;
+  min-height: 10%;
+  bottom: 0;
+  width: 100%;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  color: aliceblue;
+}
