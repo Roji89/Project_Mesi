@@ -22,6 +22,10 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  {
+    path: 'product/add',
+    component: AddProductComponent,
+  },
   { path: 'product/:id', component: EditProductComponent },
   { path: 'cart', component: CartComponent },
   {
@@ -30,10 +34,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { role: ['superadmin'] }
   },
-  {
-    path: 'product/add',
-    component: AddProductComponent,
-  }
 ];
 
 @NgModule({

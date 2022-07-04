@@ -41,11 +41,11 @@ import { EditProductComponent } from './views/edit-product/edit-product.componen
     CartComponent,
     CarouselComponent,
     ButtonComponent,
+    EditProductComponent,
     FormComponent,
     ProfileComponent,
     AdminComponent,
     AddProductComponent,
-    EditProductComponent,
   ],
   imports: [
     BrowserModule,

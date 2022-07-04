@@ -57,11 +57,12 @@ export class EditProductComponent implements OnInit {
   }
 
   getProductDetail(): void {
-    const id = this.route.snapshot.params['_id'];
+    const id = this.route.snapshot.params['id'];
+    console.log(id)
 
     this.productService
       .getProductById({
-        _id: this.productService.id,
+        _id: id,
         name: '',
         // name: this.productService.name,
         price: 0,
@@ -69,9 +70,9 @@ export class EditProductComponent implements OnInit {
         image: '',
         seller: '',
         ProductCode: '',
-      })
-      .subscribe({
+      }).subscribe({
         next: (product) => {
+          console.log(product)
           this.editProductForm = this.formBuilder.group({
             name: product.name,
             price: product.price,
@@ -84,8 +85,10 @@ export class EditProductComponent implements OnInit {
   }
 
   onEditProduct() {
+    const id = this.route.snapshot.params['id'];
+
     let product: Product = {
-      _id: this.productService.id,
+      _id: id,
       name: this.editProductForm.value['name'],
       price: this.editProductForm.value['price'],
       description: this.editProductForm.value['description'],
@@ -106,5 +109,6 @@ export class EditProductComponent implements OnInit {
       error: (e) => this.showAlert(e.error),
     })
   }
+
 
 }

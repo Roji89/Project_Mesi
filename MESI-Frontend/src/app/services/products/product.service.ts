@@ -55,23 +55,13 @@ export class ProductService {
     * @returns
     */
   getProductById(product: Product): Observable<any> {
+    console.log(product._id)
 
-    return this.http.get(this.editUrl + product._id);
-
-    // return new Promise<Product>(
-    //   (res, rej) => {
-    //     for (let product of this.products) {
-    //       if (product._id === productId) {
-    //         res(product);
-    //         break;
-    //       }
-    //     }
-    //   }
-    // );
+    return this.http.get(this.baseUrl + '/' + product._id);
   }
 
   updateProduct(product: Product): Observable<any> {
-    return this.http.put(this.editUrl + product._id, product);
+    return this.http.put(this.baseUrl + '/' + product._id, product);
 
   }
 
