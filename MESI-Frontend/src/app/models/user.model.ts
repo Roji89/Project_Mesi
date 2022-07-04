@@ -6,4 +6,9 @@ export interface User {
     old_password?: string;
     password?: string;
     token: string;
+    role: string;
 }
+
+// export interface Role {
+//     role: ['user', 'superadmin']
+// }

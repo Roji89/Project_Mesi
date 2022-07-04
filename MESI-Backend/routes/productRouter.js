@@ -5,26 +5,20 @@ const accessController = require("../controllers/accessController");
 
 productRouter.post(
   "/add",
-  accessController.adminAccess(),
-  productController.addProduct
+  productController.addProduct,
+  accessController.adminAccess
 );
-productRouter.get(
-  "/:productId",
-  productController.getProduct
-);
-productRouter.get(
-  "/",
-  productController.getProducts
-);
+productRouter.get("/:productId", productController.getProduct);
+productRouter.get("/", productController.getProducts);
 productRouter.put(
   "/:productId",
-  accessController.adminAccess(),
-  productController.editProduct
+  productController.editProduct,
+  accessController.adminAccess
 );
 productRouter.delete(
   "/:productId",
-  accessController.adminAccess(),
-  productController.deleteProduct
+  productController.deleteProduct,
+  accessController.adminAccess
 );
 
 module.exports = productRouter;

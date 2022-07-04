@@ -22,6 +22,9 @@ import { CarouselComponent } from './components/home/carousel/carousel.component
 import { ButtonComponent } from './components/commons/button/button.component';
 import { FormComponent } from './components/commons/form/form.component';
 import { ProfileComponent } from './views/profile/profile.component';
+import { AdminComponent } from './views/admin/admin.component';
+import { AddProductComponent } from './views/add-product/add-product.component';
+import { EditProductComponent } from './views/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -38,8 +41,11 @@ import { ProfileComponent } from './views/profile/profile.component';
     CartComponent,
     CarouselComponent,
     ButtonComponent,
+    EditProductComponent,
     FormComponent,
     ProfileComponent,
+    AdminComponent,
+    AddProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,4 +61,4 @@ import { ProfileComponent } from './views/profile/profile.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

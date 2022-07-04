@@ -8,15 +8,15 @@ const User = require("../model/user");
  ********************/
 const addProduct = async (req, res) => {
   try {
-    const token =
-      req.body.token || req.query.token || req.headers["x-access-token"];
-    const user = await User.findOne({ token });
-    const userID = user._id;
+    // const token =
+    //   req.body.token || req.query.token || req.headers["x-access-token"];
+    // const user = await User.findOne({ token });
+    // const userID = user._id;
 
     const { name, price, description, image, ProductCode } = req.body;
     const productExisted = await Product.findOne({ ProductCode });
 
-    if (!(name && price && description && image && ProductCode)) {
+    if (!(name && price && description && ProductCode)) {
       return res.status(400).send("All inputs are required");
     }
     if (productExisted) {
@@ -30,13 +30,11 @@ const addProduct = async (req, res) => {
       name: name.toUpperCase(),
       price: price,
       description: description,
-      image: image,
-      user: userID,
       ProductCode: ProductCode,
     });
     product.save().then(() => {
-      user.products.push(product);
-      user.save();
+      // user.products.push(product);
+      // user.save();
       return res.status(200).json(product);
     });
   } catch (error) {
