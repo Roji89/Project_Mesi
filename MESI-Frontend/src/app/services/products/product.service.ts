@@ -1,9 +1,11 @@
 import { Product } from 'src/app/models/product.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { User } from 'src/app/models/user.model';
+import { AuthService } from '../auth/auth.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -11,11 +13,12 @@ export class ProductService {
 
   private baseUrl: string = environment.API_URL + "product"
   private addUrl: string = this.baseUrl + '/add';
-  private editUrl: string = this.baseUrl + '/:productId';
+
+
   products: Product[] = [];
   private _id: string;
 
-  constructor(public http: HttpClient, private router: Router
+  constructor(public http: HttpClient, private router: Router, private authService: AuthService
   ) {
     this._id = ''
   }
@@ -34,14 +37,17 @@ export class ProductService {
    * @returns 
    */
   addProduct(product: Product) {
+    const headers = new HttpHeaders({ 'x-access-token': this.authService.token });
+
     return this.http.post(this.addUrl, {
       name: product.name,
       price: product.price,
       description: product.description,
       image: product.image,
       ProductCode: product.ProductCode,
-    })
+    }, { headers })
   }
+
   public get id(): string {
     return this._id;
   }
@@ -55,13 +61,12 @@ export class ProductService {
     * @returns
     */
   getProductById(product: Product): Observable<any> {
-    console.log(product._id)
-
     return this.http.get(this.baseUrl + '/' + product._id);
   }
 
   updateProduct(product: Product): Observable<any> {
-    return this.http.put(this.baseUrl + '/' + product._id, product);
+    const headers = new HttpHeaders({ 'x-access-token': this.authService.token });
+    return this.http.put(this.baseUrl + '/' + product._id, product, { headers });
 
   }
   deleteProduct(_id: string): Observable<any> {

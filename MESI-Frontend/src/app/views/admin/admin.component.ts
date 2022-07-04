@@ -22,6 +22,7 @@ export class AdminComponent implements OnInit {
   constructor(private productService: ProductService,
     private authService: AuthService,
     private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -47,9 +48,8 @@ export class AdminComponent implements OnInit {
   }
 
   deleteProduct(id: string) {
-    console.log("delete", id)
-
     this.productService.deleteProduct(id)
-      .subscribe(element => console.log(element))
+      .subscribe({ next: () => this.router.navigate(['/admin']) },
+    )
   }
 }

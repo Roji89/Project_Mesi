@@ -12,7 +12,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class EditProductComponent implements OnInit {
 
-  // product!: Product;
   message: string = '';
 
   editProductForm: FormGroup = this.formBuilder.group({
@@ -58,13 +57,11 @@ export class EditProductComponent implements OnInit {
 
   getProductDetail(): void {
     const id = this.route.snapshot.params['id'];
-    console.log(id)
 
     this.productService
       .getProductById({
         _id: id,
         name: '',
-        // name: this.productService.name,
         price: 0,
         description: '',
         image: '',
@@ -72,7 +69,6 @@ export class EditProductComponent implements OnInit {
         ProductCode: '',
       }).subscribe({
         next: (product) => {
-          console.log(product)
           this.editProductForm = this.formBuilder.group({
             name: product.name,
             price: product.price,

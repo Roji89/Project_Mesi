@@ -38,6 +38,7 @@ export class AddProductComponent implements OnInit {
 
 
   onAddProduct(): void {
+
     let product: Product = {
       _id: '',
       name: this.addProductForm.value['name'],
