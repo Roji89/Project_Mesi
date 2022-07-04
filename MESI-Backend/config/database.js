@@ -1,6 +1,5 @@
 const mongoose= require ("mongoose");
-//const MONGO_URI = process.env.MONGO_URI
-const MONGO_URI = "mongodb+srv://anbar27:tULh1bG9dIe5tT2N@cluster0.scr8a.mongodb.net/?retryWrites=true&w=majority"
+const MONGO_URI = process.env.MONGO_URI
 
 exports.connect = () =>  {
 
