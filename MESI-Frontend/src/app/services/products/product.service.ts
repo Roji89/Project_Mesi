@@ -70,7 +70,8 @@ export class ProductService {
 
   }
   deleteProduct(_id: string): Observable<any> {
-    return this.http.delete(this.baseUrl + '/' + _id);
+    const headers = new HttpHeaders({ 'x-access-token': this.authService.token });
+    return this.http.delete(this.baseUrl + '/' + _id, { headers });
 
   }
 
