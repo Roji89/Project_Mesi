@@ -22,7 +22,7 @@
                 <button class="mx-2 mt-2 btn btn-outline-dark" [routerLink]="['/product', product._id]">
                     Edit
                 </button>
-                <button class="mx-2 mt-2 btn btn-outline-dark">
+                <button class="mx-2 mt-2 btn btn-outline-dark" (click)="deleteProduct(product._id)">
                     Delete
                 </button>
             </td>

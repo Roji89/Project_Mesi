@@ -1,5 +1,5 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/products/product.service';
 import { Product } from 'src/app/models/product.model';
@@ -21,6 +21,7 @@ export class AdminComponent implements OnInit {
 
   constructor(private productService: ProductService,
     private authService: AuthService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -45,7 +46,10 @@ export class AdminComponent implements OnInit {
     else return false;
   }
 
-  deleteProduct() {
+  deleteProduct(id: string) {
+    console.log("delete", id)
 
+    this.productService.deleteProduct(id)
+      .subscribe(element => console.log(element))
   }
 }

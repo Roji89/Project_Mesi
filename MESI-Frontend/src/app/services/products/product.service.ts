@@ -64,5 +64,9 @@ export class ProductService {
     return this.http.put(this.baseUrl + '/' + product._id, product);
 
   }
+  deleteProduct(_id: string): Observable<any> {
+    return this.http.delete(this.baseUrl + '/' + _id);
+
+  }
 
 }
