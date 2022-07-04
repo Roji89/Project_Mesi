@@ -36,6 +36,9 @@ const CartSchema = new Schema({
 })
 module.exports = mongoose.model("Cart", CartSchema);
 // module.exports = mongoose.model("Product", CartSchema);
+<<<<<<< HEAD
 =======
 //this is the file for the cart e-commerce
 >>>>>>> 01f7ed4 (test)
+=======
+>>>>>>> 121f087a7818a1b0b86686d1ca8fafe2f414a083
